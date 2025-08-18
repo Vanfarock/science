@@ -1,0 +1,13 @@
+{
+  "cursorpyright.analysis.autoSearchPaths": true,
+  "cursorpyright.analysis.extraPaths": ["./src/**"],
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.convertImportFormat": "explicit",
+      "source.organizeImports": "always"
+    }
+  }
+}

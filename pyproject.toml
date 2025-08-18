@@ -1,0 +1,20 @@
+[project]
+name = "science"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = ["argparse>=1.4.0", "pygame>=2.6.1"]
+
+[project.scripts]
+random-walk-1d = "modules.markov_chains.bin.random_walk_1d:main"
+
+[tool.uv]
+package = true
+
+[tool.pyrefly]
+project-includes = ["./src/**/*"]
+project-excludes = ['**/*venv/**\*']
+
+[dependency-groups]
+dev = ["pyrefly>=0.28.1", "ruff>=0.12.9"]
