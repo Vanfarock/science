@@ -54,24 +54,7 @@ def main():
     chain = build_chain()
     state = chain.get_first_random_state()
 
-    world = World()
-    square = Rectangle(
-        Position(x=640, y=260),
-        Size(width=10, height=10),
-        Color.navy(),
-    )
-    square.add_component(Velocity(dx=200, dy=200))
-    square.add_component(
-        Trail(
-            color=Color.light_purple(),
-            thickness=Thickness(value=8),
-            history=[],
-            max_length=1000,
-        )
-    )
-    square.add_component(Anchor(anchor=AnchorTypeEnum.CENTER))
-    square.add_component(RandomWalkComponent(state=state))
-    world.add_entity(square)
+    world = build_world(state)
 
     view = View("Random Walk 2D", world, width=1280, height=720)
     view.add_system(RandomWalk2DSystem(chain))
@@ -102,6 +85,28 @@ def build_chain() -> MarkovChain:
     chain.add_transition(down_state, right_state, 0.25)
     chain.build()
     return chain
+
+
+def build_world(initial_state: MarkovState) -> World:
+    world = World()
+    square = Rectangle(
+        Position(x=640, y=260),
+        Size(width=10, height=10),
+        Color.navy(),
+    )
+    square.add_component(Velocity(dx=200, dy=200))
+    square.add_component(
+        Trail(
+            color=Color.light_purple(),
+            thickness=Thickness(value=8),
+            history=[],
+            max_length=1000,
+        )
+    )
+    square.add_component(Anchor(anchor=AnchorTypeEnum.CENTER))
+    square.add_component(RandomWalkComponent(state=initial_state))
+    world.add_entity(square)
+    return world
 
 
 if __name__ == "__main__":
