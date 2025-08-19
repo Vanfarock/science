@@ -9,4 +9,4 @@ A couple of applied science knowledge
 ### Markov Chains
 
 2D Random Walk
-[random_walk_2d.mp4](./assets/videos/random_walk_2d.mp4)
+[random_walk_2d.gif](./assets/videos/random_walk_2d.gif)
