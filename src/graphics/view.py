@@ -3,6 +3,7 @@ import pygame
 from graphics.screen import Screen
 from graphics.systems.movement import MovementSystem
 from graphics.systems.render import RenderSystem
+from graphics.systems.system import System
 from graphics.systems.trail import TrailSystem
 from graphics.world import World
 
@@ -19,11 +20,17 @@ class View:
         self.running = False
 
         self.world = world
-        self.world.systems.append(TrailSystem(self.screen))
-        self.world.systems.append(MovementSystem())
-        self.world.systems.append(RenderSystem(self.screen))
+        self.systems: list[System] = []
+
+    def add_system(self, system: System) -> None:
+        self.systems.append(system)
 
     def show(self) -> None:
+        self.systems.append(TrailSystem(self.screen))
+        self.systems.append(MovementSystem())
+        self.systems.append(RenderSystem(self.screen))
+        self.world.systems.extend(self.systems)
+
         self.running = True
 
         while self.running:

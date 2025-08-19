@@ -1,3 +1,5 @@
+from random import choice, random
+
 from modules.markov_chains.errors import InvalidMarkovChainError
 
 
@@ -55,3 +57,17 @@ class MarkovChain:
                 print(f"WARNING: {e.message}")
 
         self.finished = True
+
+    def get_first_random_state(self) -> MarkovState:
+        return choice(list(self.nodes.keys()))
+
+    def get_random_transition(self, state: MarkovState) -> MarkovTransition | None:
+        probability = random()
+
+        total_probability = 0.0
+        for transition in self.nodes[state]:
+            if probability < total_probability + transition.probability:
+                return transition
+            total_probability += transition.probability
+
+        return None

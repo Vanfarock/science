@@ -7,7 +7,7 @@ requires-python = ">=3.13"
 dependencies = ["argparse>=1.4.0", "pygame>=2.6.1"]
 
 [project.scripts]
-random-walk-1d = "modules.markov_chains.bin.random_walk_1d:main"
+random-walk-2d = "modules.markov_chains.bin.random_walk_2d:main"
 
 [tool.uv]
 package = true
