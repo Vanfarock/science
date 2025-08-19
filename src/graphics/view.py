@@ -11,7 +11,11 @@ pygame.init()
 
 
 class View:
-    def __init__(self, world: World, width: int, height: int, fps: int = 60) -> None:
+    def __init__(
+        self, name: str, world: World, width: int, height: int, fps: int = 60
+    ) -> None:
+        pygame.display.set_caption(name)
+
         self.width = width
         self.height = height
         self.screen = Screen(pygame.display.set_mode((width, height)))

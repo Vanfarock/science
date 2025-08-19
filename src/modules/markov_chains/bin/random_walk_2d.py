@@ -56,7 +56,7 @@ def main():
 
     world = World()
     square = Rectangle(
-        Position(x=600, y=300),
+        Position(x=640, y=260),
         Size(width=10, height=10),
         Color.navy(),
     )
@@ -73,7 +73,7 @@ def main():
     square.add_component(RandomWalkComponent(state=state))
     world.add_entity(square)
 
-    view = View(world, width=1280, height=720)
+    view = View("Random Walk 2D", world, width=1280, height=720)
     view.add_system(RandomWalk2DSystem(chain))
     view.show()
 
