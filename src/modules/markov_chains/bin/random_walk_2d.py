@@ -16,7 +16,8 @@ from graphics.entities.rectangle import Rectangle
 from graphics.systems.system import System
 from graphics.view import View
 from graphics.world import World
-from modules.markov_chains.chain import MarkovChain, MarkovState
+from modules.markov_chains.chain import MarkovState
+from modules.markov_chains.discrete import DiscreteMarkovChain
 
 
 @dataclass
@@ -25,7 +26,7 @@ class RandomWalkComponent(Component):
 
 
 class RandomWalk2DSystem(System):
-    def __init__(self, chain: MarkovChain):
+    def __init__(self, chain: DiscreteMarkovChain):
         self.chain = chain
 
     def get_required_components(self) -> list[type[Component]]:
@@ -52,7 +53,7 @@ class RandomWalk2DSystem(System):
 
 def main():
     chain = build_chain()
-    state = chain.get_first_random_state()
+    state = chain.get_random_discrete_state()
 
     world = build_world(state)
 
@@ -61,8 +62,8 @@ def main():
     view.show()
 
 
-def build_chain() -> MarkovChain:
-    chain = MarkovChain()
+def build_chain() -> DiscreteMarkovChain:
+    chain = DiscreteMarkovChain()
     left_state = MarkovState("Go Left")
     right_state = MarkovState("Go Right")
     up_state = MarkovState("Go Up")
