@@ -4,9 +4,9 @@ A couple of applied science knowledge
 
 ## Contents
 
-[Markov Chains](#markov-chains) section below.
+* [Markov Chains](#markov-chains)
 
 ### Markov Chains
 
 2D Random Walk
-[random_walk_2d.gif](./assets/videos/random_walk_2d.gif)
+![2D Random Walk](assets/gifs/random_walk_2d.gif)
