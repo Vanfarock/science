@@ -8,5 +8,8 @@ A couple of applied science knowledge
 
 ### Markov Chains
 
-2D Random Walk
+**2D Random Walk**
+
+Simple 2D Random Walk using Markov Chains with a probability of 25% of going to each direction
+
 ![2D Random Walk](assets/gifs/random_walk_2d.gif)
