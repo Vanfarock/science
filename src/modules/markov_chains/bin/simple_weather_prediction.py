@@ -8,7 +8,7 @@ def main():
     chain = build_chain()
     state = Matrix(1, 3, [[0.7, 0.2, 0.1]])
 
-    for day in range(100):
+    for day in range(10):
         print(state)
         state = chain.transition(state)
     print(state)

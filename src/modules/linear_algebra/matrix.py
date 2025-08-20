@@ -58,6 +58,60 @@ class Matrix:
                     )
         return result
 
+    def normalize(self, norm: int) -> float:
+        return sum(
+            [abs(self.get(i, j)) for i in range(self.rows) for j in range(self.cols)]
+        )
+
+    def __add__(self, other: "Matrix") -> "Matrix":
+        if self.rows != other.rows or self.cols != other.cols:
+            raise InvalidMatrixShapeError(self.rows, other.cols)
+
+        return Matrix(
+            rows=self.rows,
+            cols=self.cols,
+            data=[
+                [self.get(i, j) + other.get(i, j) for j in range(self.cols)]
+                for i in range(self.rows)
+            ],
+        )
+
+    def __radd__(self, other: "Matrix") -> "Matrix":
+        return self + other
+
+    def __sub__(self, other: "Matrix") -> "Matrix":
+        if self.rows != other.rows or self.cols != other.cols:
+            raise InvalidMatrixShapeError(self.rows, other.cols)
+
+        return Matrix(
+            rows=self.rows,
+            cols=self.cols,
+            data=[
+                [self.get(i, j) - other.get(i, j) for j in range(self.cols)]
+                for i in range(self.rows)
+            ],
+        )
+
+    def __rsub__(self, other: "Matrix") -> "Matrix":
+        return self - other
+
+    def __mul__(self, scalar: float) -> "Matrix":
+        return Matrix(
+            rows=self.rows,
+            cols=self.cols,
+            data=[[element * scalar for element in row] for row in self.data],
+        )
+
+    def __rmul__(self, scalar: float) -> "Matrix":
+        return self * scalar
+
+    def __truediv__(self, scalar: float):
+        return Matrix(
+            rows=self.rows,
+            cols=self.cols,
+            data=[[element / scalar for element in row] for row in self.data],
+        )
+
     def __str__(self) -> str:
         transposed = self.transpose()
         column_widths = [

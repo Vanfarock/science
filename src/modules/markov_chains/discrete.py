@@ -58,7 +58,8 @@ class DiscreteMarkovChain:
         matrix = Matrix(
             rows=len(self.nodes.keys()), cols=len(self.nodes.keys()), default_value=0.0
         )
-        for i, transitions in enumerate(self.nodes.values()):
-            for j, transition in enumerate(transitions):
+        for i, (state, transitions) in enumerate(self.nodes.items()):
+            for transition in transitions:
+                j = list(self.nodes.keys()).index(transition.to_state)
                 matrix.set(i, j, transition.probability)
         return matrix

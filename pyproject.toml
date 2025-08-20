@@ -9,6 +9,8 @@ dependencies = ["argparse>=1.4.0", "pygame>=2.6.1"]
 [project.scripts]
 random-walk-2d = "modules.markov_chains.bin.random_walk_2d:main"
 simple-weather-prediction = "modules.markov_chains.bin.simple_weather_prediction:main"
+pagerank-aka-1998-google-simulation = "modules.markov_chains.bin.pagerank_aka_1998_google_simulation:main"
+pagerank-aka-1998-google-deterministic = "modules.markov_chains.bin.pagerank_aka_1998_google_deterministic:main"
 
 [tool.uv]
 package = true

@@ -4,7 +4,7 @@ A couple of applied science knowledge
 
 ## Contents
 
-* [Markov Chains](#markov-chains)
+- [Markov Chains](#markov-chains)
 
 ### Markov Chains
 
@@ -33,4 +33,44 @@ t = 7  | 0.31700928    | 0.23544352    | 0.4475472     |
 t = 8  | 0.31374992    | 0.236598144   | 0.449651936   |
 t = 9  | 0.3119097664  | 0.237250016   | 0.4508402176  |
 t = 10 | 0.31087086144 | 0.23761804672 | 0.45151109184 |
+```
+
+**Google 1998's PageRank**
+
+The idea of this algorithm is ranking websites based on their "influence" across the entire net. The markov chain is structured in a way that the websites with most hyperlinks referencing it, will have greater relevance over others. There is also a damping factor to prevent from dead ends (if the website I'm currently in has no outgoing links). The intuition behind the damping factor is as if the user randomly access any website (teleportation).
+
+There are two ways to do the Page Rank:
+
+- Simulation: simulates that a user is surfing the web using the Markov Chain principles. In the end we will have a count of how many visits each website had and therefore rank them accordingly.
+
+- Deterministic: apply some matrix operations to a Vector State, giving a "damping_factor" importance to websites accessed via hyperlinks and "1 - damping_factor" importance to random websites access (teleportation). The result is a Vector State with the probabilities of each website being accessed in that moment. Higher probabilities equals higher relevance
+
+Given a simple web structure like (each letter is a website):
+
+- A -> B or C
+- B -> C
+- C -> A
+- D -> C
+- E -> C or D
+
+The results of both Simulation and Deterministic approach can be seen below:
+
+Simulation
+
+```
+C: 0.386606
+A: 0.358539
+B: 0.182162
+D: 0.042803
+E: 0.029890
+```
+
+Deterministic
+
+```
+C: 0.386433
+A: 0.358468
+B: 0.182349
+D: 0.042750
+E: 0.030000
 ```
