@@ -18,7 +18,7 @@ Simple 2D Random Walk using Markov Chains with a probability of 25% of going to 
 
 This weather prediction simulates a person in a dark room, without any windows and without knowing the weather outside that day. The input for the Markov chain is therefore a probability vector of whether the weather is Sunny, Cloudy, or Rainy. After each day, the person discovers what the previous day’s weather was, and based on these transitions, the probability state eventually converges to specific probabilities for each type of weather.
 
-The simulation below shows the evolution of the state vector. At first, the person thought there was a 70% chance of it being sunny, but as the days passed, they noticed there was a much higher chance of it being rainy. Pretty depressing for someone locked in a room!
+The simulation below shows the evolution of the state vector. At first, the person thought there was a 70% chance of it being sunny, but as the days passed, they noticed there was a much higher chance of it being rainy. Kinda depressing for someone locked in a room!
 
 ```
          Sunny           Cloudy          Rainy
