@@ -23,11 +23,17 @@ class DiscreteMarkovChain:
 
     def validate(self) -> None:
         for state, transitions in self.nodes.items():
-            total_probability = sum(t.probability for t in transitions)
+            total_probability = self.validate_state(state)
             if total_probability != 1.0:
                 raise InvalidMarkovChainError(
                     state=state.name, probability=total_probability
                 )
+
+    def validate_state(self, state: MarkovState) -> float:
+        transitions = self.nodes.get(state)
+        if transitions is None:
+            return 0.0
+        return sum(t.probability for t in transitions)
 
     def build(self, raise_error: bool = True) -> None:
         try:

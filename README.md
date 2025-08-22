@@ -74,3 +74,26 @@ B: 0.182349
 D: 0.042750
 E: 0.030000
 ```
+
+**Text Generation Based on Crime and Punishment - Dostoevsky**
+
+By performing a complete token analysis of Crime and Punishment, we can statistically evaluate the probability of
+one word following another. This representation was a Hashmap of Hashmaps like below:
+
+```
+{
+    ...,
+    'punishment': {'by': 1, 'part': 1, 'coming': 1}
+    ...,
+}
+```
+
+In this structure, after the word 'punishment', the words 'by', 'part' and 'coming' appear in the book once each. This frequency count shows us that the probability of the sequence 'punishment part' appears is 33%, for example.
+
+Using these probabilities, we can build a Markov Chain that generates new text sequences, such as the example below:
+
+```
+effective in return was distressing way in his obeyed have deal quiet
+```
+
+It doesn't make much sense as a full sentence (it didn't even finish), but as short sequences of words we already can see some reasoning behind.
